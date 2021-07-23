@@ -14,7 +14,6 @@ const append = (message, position)=>{
     messageContainer.append(messageElement);
     messageContainer.scrollTop = messageContainer.scrollHeight;
     if(position == 'left'){
-        console.log('sound is playing');
         audio.play();
     }
 }
@@ -28,11 +27,11 @@ form.addEventListener('submit', (e)=>{
     messageInput.value = '';
 })
 
-const name = prompt("Enter your name to join LetsChat")
+const name = prompt("Enter your name to join")
 socket.emit('new-user-joined', name)
 
 socket.on('user-joined', name=>{
-    append(`${name} joined the chat`, 'right');
+    append(`${name} joined the chat`, 'left');
 })
 
 socket.on('receive', data=>{
